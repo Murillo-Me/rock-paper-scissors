@@ -62,6 +62,23 @@ function countScore(winner, playerScore, computerScore) {
         // }
 }
 
+function roulettePlay() {
+    const iconElement = document.querySelector('#computer-play > i')
+    rouletteIcons = ['far fa-hand-rock fa-5x', 'far fa-hand-paper fa-5x', 'far fa-hand-scissors fa-5x']
+    let i = 0
+    return setInterval(() => {
+        iconElement.setAttribute('class', rouletteIcons[i])
+        console.log(iconElement)
+        i++
+        if (i === 3) {
+            i = 0
+        }
+    }, 300)
+
+}
+
+const rouletteIntervalID = roulettePlay()
+
 const announcements = document.querySelector('.instructions:first-of-type')
 const result = document.querySelector('.result')
 console.log(announcements)
@@ -80,6 +97,11 @@ let playerScore = 0
 buttons.forEach(btn => {btn.addEventListener('click', (e) => {
     let roundResults = playRound(e.currentTarget.getAttribute('id'),computerPlay())
     result.textContent = roundResults.result
+
+    clearInterval(rouletteIntervalID)
+    const iconElement = document.querySelector('#computer-play > i')
+    iconElement.setAttribute('class', `far fa-hand-${computerPick} fa-5x`)
+
     console.log(roundResults)
 
     if (roundResults.winner==='draw') return;

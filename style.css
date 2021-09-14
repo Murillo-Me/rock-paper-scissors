@@ -46,17 +46,14 @@ h1.result {
 }
 
 .computer-play-img-container {
+    display: table-cell;
     border: 3px solid darkgray;
     border-radius: 4px;
-    padding: 10px 35px;
+    padding: 15px;
     margin: 20px;
     min-height: 1rem;
     min-width: 1rem;
     text-align: center;
-}
-
-span#computer-play {
-    font-size: 5rem;
 }
 
 .user-play-choices {
@@ -74,7 +71,6 @@ button.user-input {
     width: auto;
     margin: 1rem;
     cursor: pointer;
-    display: table-cell;
     transition: transform 0.5s ease;
 }
 
