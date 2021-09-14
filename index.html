@@ -4,10 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/adfbc2203b.js" crossorigin="anonymous"></script>
     <title>Rock Papers Scissors</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Rock, Paper, Scissors!</h1>
+    </header>
+    <main>
+        <div class="play-area-container">
+            <h1 class="instructions">Are you ready for the game of your life?<br>
+                                    What will be the computer's choice?</h1>
+            <h1 class="result"> </h1>
+            <div class="computer-play-img-container">
+                <span id="computer-play">?</span>
+            </div>
+            <div class="user-play-choices">
+                <h1 class="instructions">What is your choice?</h1>
+                <button class="user-input" id="rock"><i class="far fa-hand-rock fa-2x"></i></button>
+                <button class="user-input" id="paper"><i class="far fa-hand-paper fa-2x"></i></button>
+                <button class="user-input" id="scissors"><i class="far fa-hand-scissors fa-2x"></i></button>
+            </div>
+        </div>
+        <div class="score-tracker">
+            <div class="player-score-container">
+                <span>Player score: </span>
+                <span id="player-score">0</span>
+            </div>
+            <div class="computer-score-container">
+                <span>Computer score: </span>
+                <span id="computer-score">0</span>
+            </div>
+        </div>
+    </main>
+
     <script src="./scripts/app.js"></script>
 </body>
 </html>

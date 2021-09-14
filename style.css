@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+header {
+    padding-block: 50px;
+    margin-block: 10px;
+    font-size:xx-large;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.play-area-container {
+    border: 2px dotted black;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+}
+
+h1.instructions {
+    font-size: x-large;
+    margin: 10px;
+    width: 100%;
+}
+
+h1.result {
+    margin-bottom: 10px;
+}
+
+.computer-play-img-container {
+    border: 3px solid darkgray;
+    border-radius: 4px;
+    padding: 10px 35px;
+    margin: 20px;
+    min-height: 1rem;
+    min-width: 1rem;
+    text-align: center;
+}
+
+span#computer-play {
+    font-size: 5rem;
+}
+
+.user-play-choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button.user-input {
+    font-size: xx-large;
+    border: 3px solid darkgray;
+    border-radius: 4px;
+    padding: 25px;
+    height: fit-content;
+    width: auto;
+    margin: 1rem;
+    cursor: pointer;
+    display: table-cell;
+    transition: transform 0.5s ease;
+}
+
+button.user-input:hover {
+    transform: scale(0.9);
+    background-color: rgb(167, 167, 167);
+}
+
+i {
+    vertical-align: middle;
+}
+
+.score-tracker {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    margin-top: 7px;
+}
