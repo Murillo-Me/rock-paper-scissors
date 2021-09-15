@@ -6,15 +6,15 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return {result: `It's a draw! You have both picked ${playerSelection}`, winner: 'draw'}
+        return {result: `It's a draw! You have both picked ${playerSelection}`, winner: 'draw', playerPick: playerSelection, 'computerPick': computerSelection}
     }
     else if (possibleSelections.indexOf(playerSelection) - possibleSelections.indexOf(computerSelection) === 1 ||
             possibleSelections.indexOf(playerSelection) - possibleSelections.indexOf(computerSelection) === -2) {
-        return {result: `You win! ${playerSelection} beats ${computerSelection}.`, winner: 'player'}
+        return {result: `You win! ${playerSelection} beats ${computerSelection}.`, winner: 'player', playerPick: playerSelection, 'computerPick': computerSelection}
     }
     else if (possibleSelections.indexOf(computerSelection) - possibleSelections.indexOf(playerSelection) === 1 ||
     possibleSelections.indexOf(computerSelection) - possibleSelections.indexOf(playerSelection) === -2) {
-        return {result: `You lose! The computer picked ${computerSelection}.\nUnfortunately, it beats ${playerSelection}.`, winner: 'computer'}
+        return {result: `You lose! The computer picked ${computerSelection}.\nUnfortunately, it beats ${playerSelection}.`, winner: 'computer', playerPick: playerSelection, 'computerPick': computerSelection}
     }
 }
 
@@ -46,47 +46,21 @@ function game() {
     }
 }
 
-function countScore(winner, playerScore, computerScore) {
-
-        if (winner !== 'draw') {
-            winner === 'player' ? playerScore++ : computerScore++
-        }
-
-        // if (playerScore >= 3) {
-        //     alert(`You win! You have won ${playerScore} rounds and lost ${computerScore}.`)
-        //     return
-        // }
-        // else if (computerScore >= 3) {
-        //     alert(`You lose! You have lost ${computerScore} rounds and won ${playerScore}.`)
-        //     return
-        // }
-}
-
 function roulettePlay() {
     const iconElement = document.querySelector('#computer-play > i')
     rouletteIcons = ['far fa-hand-rock fa-5x', 'far fa-hand-paper fa-5x', 'far fa-hand-scissors fa-5x']
     let i = 0
     return setInterval(() => {
         iconElement.setAttribute('class', rouletteIcons[i])
-        console.log(iconElement)
         i++
         if (i === 3) {
             i = 0
         }
-    }, 300)
+    }, 150)
 
 }
 
-const rouletteIntervalID = roulettePlay()
-
-const announcements = document.querySelector('.instructions:first-of-type')
-const result = document.querySelector('.result')
-console.log(announcements)
-
-announcements.textContent = "You are going to play 5 rounds of rock, paper, scissors agaisn't the computer."
-announcements.innerHTML += '<br>What is your play? Rock, paper or scissors?<br><br>'
-
-const buttons = document.querySelectorAll('.user-input')
+let rouletteIntervalID = roulettePlay()
 
 const computerScoreElement = document.querySelector('#computer-score')
 let computerScore = 0
@@ -94,17 +68,33 @@ let computerScore = 0
 const playerScoreElement = document.querySelector('#player-score')
 let playerScore = 0
 
+let roundCounter = 1
+
+const roundCounterElement = document.querySelector('h1.round-counter');
+console.log(roundCounterElement)
+const result = document.querySelector('.result')
+const buttons = document.querySelectorAll('.user-input')
+
 buttons.forEach(btn => {btn.addEventListener('click', (e) => {
     let roundResults = playRound(e.currentTarget.getAttribute('id'),computerPlay())
     result.textContent = roundResults.result
+    result.style.opacity = '1'
+
+    roundCounter++
+    roundCounterElement.textContent = `Round ${roundCounter}`
 
     clearInterval(rouletteIntervalID)
     const iconElement = document.querySelector('#computer-play > i')
-    iconElement.setAttribute('class', `far fa-hand-${computerPick} fa-5x`)
+    iconElement.setAttribute('class', `far fa-hand-${roundResults.computerPick} fa-5x`)
 
-    console.log(roundResults)
 
-    if (roundResults.winner==='draw') return;
+    if (roundResults.winner==='draw') {
+        setTimeout(() => {
+            rouletteIntervalID = roulettePlay()
+        }, 1500);
+        return;
+    }
+
     (roundResults.winner==='player') ? playerScore++ : computerScore++
     
     playerScoreElement.textContent = playerScore
@@ -119,19 +109,8 @@ buttons.forEach(btn => {btn.addEventListener('click', (e) => {
         alert("YOU HAVE LOST! TRY AGAIN NEXT TIME!")
         window.location.reload()
     }
+
+    setTimeout(() => {
+        rouletteIntervalID = roulettePlay()
+    }, 1500);
 })})
-
-
-
-// buttons.forEach(btn => {btn.addEventListener('click', (e) => {
-//     playerPick = e.currentTarget
-//     console.log(playerPick)
-// })})
-
-// setTimeout(() => {
-//     announcements.textContent = "You are going to play 5 rounds of rock, paper, scissors agaisn't the computer."
-//     console.log(playerPlay(announcements))
-// }, 2000);
-
-// alert("You are going to play 5 rounds of rock, paper, scissors agaisn't the computer.");
-// game();

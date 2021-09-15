@@ -8,7 +8,7 @@
 }
 
 header {
-    padding-block: 50px;
+    padding-block: 25px;
     margin-block: 10px;
     font-size:xx-large;
     text-align: center;
@@ -21,28 +21,35 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 15px;
+}
+
+h1.round-counter {
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-bottom: 10px;
 }
 
 .play-area-container {
     border: 2px dotted black;
     border-radius: 10px;
-    padding: 30px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70%;
+    width: 80%;
 }
 
 h1.instructions {
     font-size: x-large;
-    margin: 10px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
 h1.result {
     margin-bottom: 10px;
+    opacity: 0;
 }
 
 .computer-play-img-container {
